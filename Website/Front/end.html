@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xi team</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="scripts.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <img src="img/logo_bank.png" class="logo">
+            <img src="img/logo_team.png" class="logo">
+        </div>
+        <nav class="nav-links">
+            <a href="index.html">Главная страница</a>
+            <a href="">Документация</a>
+            <a href="">Контакты</a>
+        </nav>
+    </header>
+    <div class="carousel-container">
+        <button class="arrow left-arrow" onclick="prevImage()">&#10094;</button>
+        <img id="carousel-image" src="path_to_image1" class="carousel-image">
+        <button class="arrow right-arrow" onclick="nextImage()">&#10095;</button>
+    </div>
+    <div class="buttons-container">
+        <button class="btn" onclick="downloadImage()">Скачать изображение</button>
+
+    </div>
+</body>
+</html>
