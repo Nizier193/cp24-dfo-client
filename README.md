@@ -2,3 +2,6 @@
 Предположим, вы являетесь сотрудником банка, тогда для клиентов вам нужно создать баннер. Эта программа генерирует новые картинки используя YandexART и создаёт актуальный контент для расположения его на баннере.
 
 Для работы с проектом:
+git clone https://github.com/Nizier193/DFO_HackItON.git
+pip install pip install -r requirements.txt
+python shell.py
