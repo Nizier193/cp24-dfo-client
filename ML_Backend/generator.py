@@ -3,6 +3,7 @@ import time
 import os
 import json
 import shutil
+from termcolor import cprint
 
 if 'logger.json' not in os.listdir('.'):
     raise Exception('Нет данных для аутентификации в YandexAPI.')
@@ -35,6 +36,17 @@ class ProcessText():
     def __init__(self):
         pass
 
+    def errorlog(self, request):
+        answ = request.json().get('error')
+
+        if request.status_code in [400, 401, 402, 403, 404, 405]:
+            cprint("\nЧто-то не так с подключением к API YandexGPT/ART. Проверьте, правильно ли указаны ключи в logger.json.\n", 'red')
+            cprint(f"{answ['httpCode']} >> {answ['httpStatus']}", 'red')
+            if input("Больше сведений (Y/n): ") == 'Y': print(answ + '\n')
+
+            time.sleep(2)
+            raise Exception(f"{answ['httpCode']} >> {answ['httpStatus']}")
+
     def _basic_request(self, text):
         prompt = {
             "modelUri": f"gpt://{catalogue_id}/yandexgpt-lite/latest",
@@ -58,7 +70,8 @@ class ProcessText():
         response = requests.post(
             url, headers=headers, json=prompt
         )
-        # print(response.json())
+
+        self.errorlog(response)
 
         return response.json()
 
